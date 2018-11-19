@@ -12,7 +12,7 @@ MongoClient.connect('mongodb://demo:demo@ds125146.mlab.com:25146/savage', (err, 
   if (err) return console.log(err)
   db = database
   app.listen(process.env.PORT || 8000, () => {
-    console.log('listening on 3000')
+    console.log('listening on 8000')
   })
 })
 
@@ -65,7 +65,7 @@ app.put('/messagesDown', (req, res) => {
   db.collection('messages')
   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
     $set: {
-      thumbDown:req.body.thumbDown + 1
+      thumbUp:req.body.thumbUp - 1
     }
   }, {
     sort: {_id: -1},
